@@ -15,6 +15,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var newsManager = NewsManager()
     var objNewsData:NewsData!
     var tempNewsData:NewsData!
+    var emptyNewsData:NewsData!
     var searchedText = ""
     
     let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=25282fd75a1d44198feb661175707321"
@@ -56,6 +57,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBAction func btnBackTapped(_ sender: UIButton) {
         viewTop.isHidden = false
         viewSearch.isHidden = true
+        view.endEditing(true)
     }
     
     @IBAction func btnCrossTapped(_ sender: UIButton) {
@@ -71,8 +73,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             self.flagDataFetched = true
             self.newsTable.reloadData()
         }
-     }
-
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if flagDataFetched == false{
             return 0
@@ -92,9 +94,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-//        return 320
-//    }
+    //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    //        return 320
+    //    }
     
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == txtSearch{
@@ -118,8 +120,44 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     func updateTableData(searchText:String)
     {
         print(searchedText)
+        //tempNewsData = emptyNewsData
+        tempNewsData.articles.removeAll()
+        flagDataFetched = false
+        let articlesCount = objNewsData.articles.count
         
+        if articlesCount > 0{
+            for search in 0..<articlesCount{
+                let data = objNewsData.articles[search].title
+                let range = data?.lowercased().range(of: searchText, options: .caseInsensitive, range: nil, locale: nil)
+                if range != nil{
+                    self.tempNewsData.articles.append(objNewsData.articles[search])
+                    flagDataFetched = true
+                }
+            }
+        }
+        newsTable.reloadData()
     }
-
+    
 }
-
+//@objc func searchText()
+//{
+//    self.tempArray.removeAll()
+//
+//    if txtSearchField.text?.count != 0
+//    {
+//        for search in 0..<arrChatData.count{
+//
+//            let data = arrChatData[search].name
+//            guard let nameToSearch = txtSearchField.text else{ return }
+//            let range = data.lowercased().range(of: nameToSearch, options: .caseInsensitive, range: nil, locale: nil)
+//            if range != nil{
+//                self.tempArray.append(arrChatData[search])
+//            }
+//
+//        }        }else{
+//        for obj in arrChatData{
+//            self.tempArray.append(obj)
+//        }
+//    }
+//    tableViewChat.reloadData()
+//}
