@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "41F8A93A-9E71-430A-8438-CBD076392677"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "B94F5F48-76A3-462F-9F4C-4FA6EF9EC8F4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "News App/Controller/ViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "37"
+            endingLineNumber = "37"
+            landmarkName = "didUpdateNews(_:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "B94F5F48-76A3-462F-9F4C-4FA6EF9EC8F4 - 12f2e10496231a02"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "News_App.ViewController.didUpdateNews(News_App.NewsData) -&gt; ()"
+                  moduleName = "News App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adwaitb/Documents/Adwait%20Barkale/Training%20Part/News%20App/News%20App/Controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "356">
+               </Location>
+               <Location
+                  uuid = "B94F5F48-76A3-462F-9F4C-4FA6EF9EC8F4 - 79bdb4bae663b536"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in News_App.ViewController.didUpdateNews(News_App.NewsData) -&gt; ()"
+                  moduleName = "News App"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/adwaitb/Documents/Adwait%20Barkale/Training%20Part/News%20App/News%20App/Controller/ViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "52">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5F9F5C67-CFA8-4573-BF3F-62E356B8D477"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "News App/Model/NewsManager.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "parseJSON(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
