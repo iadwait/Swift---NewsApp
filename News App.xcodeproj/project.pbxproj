@@ -17,6 +17,7 @@
 		DE3A461D25493673005C2A7B /* NewsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3A461C25493673005C2A7B /* NewsManager.swift */; };
 		DE3A461F25494740005C2A7B /* NewsViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3A461E25494740005C2A7B /* NewsViewCell.swift */; };
 		DE3A462225494E3F005C2A7B /* UIImage + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3A462125494E3F005C2A7B /* UIImage + Extension.swift */; };
+		DE3A462425498C27005C2A7B /* NoInternetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE3A462325498C27005C2A7B /* NoInternetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		DE3A461C25493673005C2A7B /* NewsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsManager.swift; sourceTree = "<group>"; };
 		DE3A461E25494740005C2A7B /* NewsViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsViewCell.swift; sourceTree = "<group>"; };
 		DE3A462125494E3F005C2A7B /* UIImage + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage + Extension.swift"; sourceTree = "<group>"; };
+		DE3A462325498C27005C2A7B /* NoInternetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoInternetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				DE3A46072549355F005C2A7B /* ViewController.swift */,
 				DE3A461E25494740005C2A7B /* NewsViewCell.swift */,
+				DE3A462325498C27005C2A7B /* NoInternetViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				DE3A461D25493673005C2A7B /* NewsManager.swift in Sources */,
 				DE3A461F25494740005C2A7B /* NewsViewCell.swift in Sources */,
 				DE3A46042549355F005C2A7B /* AppDelegate.swift in Sources */,
+				DE3A462425498C27005C2A7B /* NoInternetViewController.swift in Sources */,
 				DE3A46062549355F005C2A7B /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

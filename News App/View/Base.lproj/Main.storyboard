@@ -209,10 +209,10 @@
             </objects>
             <point key="canvasLocation" x="131.8840579710145" y="91.741071428571431"/>
         </scene>
-        <!--View Controller-->
+        <!--No Internet View Controller-->
         <scene sceneID="DTw-4h-ZON">
             <objects>
-                <viewController id="uir-6f-tMV" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NoInternetViewController" id="uir-6f-tMV" customClass="NoInternetViewController" customModule="News_App" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ffQ-qd-gce">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
