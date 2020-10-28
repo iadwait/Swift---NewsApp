@@ -32,6 +32,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         newsManager.performRequest(with: url)
     }
     
+    func setupUI()
+    {
+        
+    }
+    
     func didUpdateNews(_ data: NewsData) {
         objNewsData = data
         DispatchQueue.main.async {
