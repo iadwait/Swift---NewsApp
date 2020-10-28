@@ -10,35 +10,63 @@ import UIKit
 
 
 
-class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsAppDelegate {
+class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsAppDelegate,UITextFieldDelegate {
     
     var newsManager = NewsManager()
     var objNewsData:NewsData!
+    var tempNewsData:NewsData!
+    var searchedText = ""
+    
     let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=25282fd75a1d44198feb661175707321"
     var flagDataFetched = false
     
     
     @IBOutlet weak var newsTable: UITableView!
+    @IBOutlet weak var viewTop: UIView!
+    @IBOutlet weak var viewSearch: UIView!
+    @IBOutlet weak var txtSearch: UITextField!
+    
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        setupUI()
         newsTable.delegate = self
         newsTable.dataSource = self
         newsTable.rowHeight = UITableView.automaticDimension
         newsTable.estimatedRowHeight = 320
         newsManager.delegate = self
+        txtSearch.delegate = self
         newsManager.performRequest(with: url)
+        tempNewsData = objNewsData
     }
     
     func setupUI()
     {
-        
+        viewSearch.isHidden = true
+        txtSearch.text = "Search News..."
     }
+    
+    @IBAction func btnSearchTapped(_ sender: UIButton) {
+        viewSearch.isHidden = false
+        viewTop.isHidden = true
+    }
+    
+    @IBAction func btnBackTapped(_ sender: UIButton) {
+        viewTop.isHidden = false
+        viewSearch.isHidden = true
+    }
+    
+    @IBAction func btnCrossTapped(_ sender: UIButton) {
+        searchedText = ""
+        txtSearch.text = ""
+    }
+    
     
     func didUpdateNews(_ data: NewsData) {
         objNewsData = data
+        tempNewsData = objNewsData
         DispatchQueue.main.async {
             self.flagDataFetched = true
             self.newsTable.reloadData()
@@ -49,12 +77,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         if flagDataFetched == false{
             return 0
         }
-        return objNewsData.articles.count
+        return tempNewsData.articles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = newsTable.dequeueReusableCell(withIdentifier: "NewsViewCell", for: indexPath) as! NewsViewCell
-        let data = objNewsData.articles[indexPath.row]
+        let data = tempNewsData.articles[indexPath.row]
         cell.lblTitle.text = data.title
         cell.lblDescription.text = data.articleDescription
         cell.imgNews.contentMode = .scaleAspectFill
@@ -67,6 +95,31 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
 //        return 320
 //    }
+    
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        if textField == txtSearch{
+            textField.text = ""
+            searchedText = ""
+        }
+        return true
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if txtSearch.text != ""
+        {
+            searchedText = txtSearch.text!
+            updateTableData(searchText: searchedText)
+        }
+        view.endEditing(true)
+        
+        return true
+    }
+    
+    func updateTableData(searchText:String)
+    {
+        print(searchedText)
+        
+    }
 
 }
 
