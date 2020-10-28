@@ -8,11 +8,10 @@
 
 import UIKit
 
-
-
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsAppDelegate,UITextFieldDelegate {
     
     var newsManager = NewsManager()
+    var refresher = UIRefreshControl()
     var objNewsData:NewsData!
     var tempNewsData:NewsData!
     var emptyNewsData:NewsData!
@@ -41,6 +40,19 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         txtSearch.delegate = self
         newsManager.performRequest(with: url)
         tempNewsData = objNewsData
+        refresher.attributedTitle = NSAttributedString(string: "Pull to Refresh")
+        refresher.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        newsTable.addSubview(refresher)
+    }
+    
+    @objc func refreshData()
+    {
+        print("Refresh Table Data")
+        txtSearch.text = ""
+        viewSearch.isHidden = true
+        viewTop.isHidden = false
+        newsManager.performRequest(with: url)
+        refresher.endRefreshing()
     }
     
     func setupUI()
@@ -122,7 +134,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         print(searchedText)
         //tempNewsData = emptyNewsData
         tempNewsData.articles.removeAll()
-        flagDataFetched = false
+        //flagDataFetched = false
         let articlesCount = objNewsData.articles.count
         
         if articlesCount > 0{
@@ -134,6 +146,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
                     flagDataFetched = true
                 }
             }
+        }
+        if tempNewsData.articles.count == 0{
+            tempNewsData = objNewsData
+            flagDataFetched = true
         }
         newsTable.reloadData()
     }
