@@ -8,6 +8,7 @@
 
 import UIKit
 import SafariServices
+import Network
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsAppDelegate,UITextFieldDelegate {
     
@@ -18,7 +19,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     var emptyNewsData:NewsData!
     var searchedText = ""
     
-    let url = "https://newsapi.org/v2/top-headlines?country=us&apiKey=25282fd75a1d44198feb661175707321"
+    let url = "https://newsapi.org/v2/top-headlines?country=in&apiKey=25282fd75a1d44198feb661175707321"
     var flagDataFetched = false
     
     
@@ -43,7 +44,26 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         refresher.attributedTitle = NSAttributedString(string: "Pull to Refresh")
         refresher.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         newsTable.addSubview(refresher)
+        monitorInternetConnection()
     }
+    
+    func monitorInternetConnection()
+    {
+        let monitor = NWPathMonitor()
+        monitor.pathUpdateHandler = { path in
+            if path.status == .satisfied{
+                //Internet is there
+                print("Internet Available")
+            }else{
+                //No Internet
+                print("Internet Not Available")
+            }
+        }
+        let queue = DispatchQueue(label: "Network")
+        monitor.start(queue: queue)
+    }
+    
+    
     
     @objc func goToNews()
     {
@@ -108,6 +128,8 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         cell.imgNews.contentMode = .scaleAspectFill
         if let strUrl = data.urlToImage{
             cell.imgNews.load(url: URL(string: strUrl) ?? URL(string: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")!)
+        }else{
+            cell.imgNews.isHidden = true
         }
         return cell
     }
