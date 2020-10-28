@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource,NewsAppDelegate,UITextFieldDelegate {
     
@@ -25,8 +26,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var txtSearch: UITextField!
-    
-    
+        
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,11 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         refresher.attributedTitle = NSAttributedString(string: "Pull to Refresh")
         refresher.addTarget(self, action: #selector(refreshData), for: .valueChanged)
         newsTable.addSubview(refresher)
+    }
+    
+    @objc func goToNews()
+    {
+        print("News Tapped")
     }
     
     @objc func refreshData()
@@ -99,11 +104,22 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         let data = tempNewsData.articles[indexPath.row]
         cell.lblTitle.text = data.title
         cell.lblDescription.text = data.articleDescription
+        cell.viewNews.layer.cornerRadius = 8
         cell.imgNews.contentMode = .scaleAspectFill
         if let strUrl = data.urlToImage{
             cell.imgNews.load(url: URL(string: strUrl) ?? URL(string: "https://homepages.cae.wisc.edu/~ece533/images/airplane.png")!)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //print("News Tapped at Index \(indexPath)")
+        
+        if let strUrl = tempNewsData.articles[indexPath.row].url
+        {
+            let vc = SFSafariViewController(url: URL(string: strUrl)!)
+            present(vc,animated: true)
+        }
     }
     
     //    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

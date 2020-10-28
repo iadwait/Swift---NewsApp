@@ -75,6 +75,7 @@
                                             <outlet property="imgNews" destination="ooy-bS-vSA" id="bPo-Ex-L63"/>
                                             <outlet property="lblDescription" destination="v8l-35-i2c" id="Bnl-y1-uxp"/>
                                             <outlet property="lblTitle" destination="Sgj-MI-8Ff" id="5DA-y2-Xq1"/>
+                                            <outlet property="viewNews" destination="gBG-Ka-OZV" id="Ssi-Cb-80O"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

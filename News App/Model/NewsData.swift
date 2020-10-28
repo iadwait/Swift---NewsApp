@@ -19,7 +19,7 @@ struct NewsData: Codable {
 struct Article: Codable {
     let author: String?
     let title, articleDescription: String?
-    //let url: String
+    let url: String?
     let urlToImage: String?
     //let publishedAt: Date
     //let content: String?
@@ -28,8 +28,8 @@ struct Article: Codable {
         //case source, author, title
         case author , title
         case articleDescription = "description"
-        case urlToImage
-        //case url, publishedAt, content
+        case urlToImage,url
+        //case publishedAt, content
     }
 }
 
