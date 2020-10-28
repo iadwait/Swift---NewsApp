@@ -27,7 +27,9 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     @IBOutlet weak var viewTop: UIView!
     @IBOutlet weak var viewSearch: UIView!
     @IBOutlet weak var txtSearch: UITextField!
-        
+    @IBOutlet weak var containerView: UIView!
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,16 +56,30 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
             if path.status == .satisfied{
                 //Internet is there
                 print("Internet Available")
+                DispatchQueue.main.async {
+                self.containerView.isHidden = true
+                    self.newsTable.isHidden = false
+
+                }
             }else{
                 //No Internet
                 print("Internet Not Available")
+                DispatchQueue.main.async {
+                    self.containerView.isHidden = false
+                    self.newsTable.isHidden = true
+                    let noInternetVC = self.storyboard?.instantiateViewController(identifier: "NoInternetViewController") as! NoInternetViewController
+                    self.addChild(noInternetVC)
+                    noInternetVC.view.frame = .init(x: 0, y: 0, width: self.containerView.frame.size.width, height: self.containerView.frame.size.height)
+                    self.containerView.addSubview(noInternetVC.view)
+                    noInternetVC.didMove(toParent: self)
+                    
+                }
+                
             }
         }
         let queue = DispatchQueue(label: "Network")
         monitor.start(queue: queue)
     }
-    
-    
     
     @objc func goToNews()
     {

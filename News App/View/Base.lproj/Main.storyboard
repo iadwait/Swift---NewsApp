@@ -15,6 +15,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bIW-4C-q0E" userLabel="ContainerView">
+                                <rect key="frame" x="0.0" y="154" width="414" height="708"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="EhM-KD-VgQ">
                                 <rect key="frame" x="0.0" y="154" width="414" height="708"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -184,9 +188,13 @@
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="EhM-KD-VgQ" secondAttribute="trailing" id="5D7-GS-ky4"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="EhM-KD-VgQ" secondAttribute="bottom" id="NcJ-UE-UiJ"/>
+                            <constraint firstItem="bIW-4C-q0E" firstAttribute="top" secondItem="tUh-H4-vGf" secondAttribute="bottom" id="Sqd-br-X3H"/>
+                            <constraint firstItem="bIW-4C-q0E" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UO9-b0-HyG"/>
                             <constraint firstItem="tUh-H4-vGf" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="VhL-TV-7Co"/>
                             <constraint firstItem="EhM-KD-VgQ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="YHX-5p-M8v"/>
                             <constraint firstItem="EhM-KD-VgQ" firstAttribute="top" secondItem="tUh-H4-vGf" secondAttribute="bottom" id="Zxu-TL-saf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bIW-4C-q0E" secondAttribute="trailing" id="jO9-Tn-9n4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="bIW-4C-q0E" secondAttribute="bottom" id="lf9-gI-com"/>
                             <constraint firstItem="tUh-H4-vGf" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="sKv-eR-9oE"/>
                             <constraint firstItem="EhM-KD-VgQ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="vaE-vw-Feh"/>
                             <constraint firstItem="tUh-H4-vGf" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="ylW-C9-D38"/>
@@ -199,6 +207,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="bIW-4C-q0E" id="ubr-nd-ihX"/>
                         <outlet property="newsTable" destination="EhM-KD-VgQ" id="OLz-zX-52H"/>
                         <outlet property="txtSearch" destination="tes-Hp-8Xn" id="EDa-Gq-QvL"/>
                         <outlet property="viewSearch" destination="dLM-Ff-epQ" id="SQr-WK-mvt"/>
