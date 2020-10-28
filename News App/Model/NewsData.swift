@@ -21,7 +21,7 @@ struct Article: Codable {
     let title, articleDescription: String?
     let url: String?
     let urlToImage: String?
-    //let publishedAt: Date
+    let publishedAt: String?
     //let content: String?
 
     enum CodingKeys: String, CodingKey {
@@ -29,7 +29,8 @@ struct Article: Codable {
         case author , title
         case articleDescription = "description"
         case urlToImage,url
-        //case publishedAt, content
+        case publishedAt
+        //case content
     }
 }
 

@@ -147,6 +147,10 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
         }else{
             cell.imgNews.isHidden = true
         }
+        
+        if let strDate = data.publishedAt{
+            cell.lblPublishedAt.text = "Published At \(strDate)"
+        }
         return cell
     }
     

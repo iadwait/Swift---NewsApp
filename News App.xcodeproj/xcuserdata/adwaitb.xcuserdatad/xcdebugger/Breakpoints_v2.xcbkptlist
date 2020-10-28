@@ -78,8 +78,8 @@
             filePath = "News App/Controller/ViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "188"
-            endingLineNumber = "188"
+            startingLineNumber = "192"
+            endingLineNumber = "192"
             landmarkName = "updateTableData(searchText:)"
             landmarkType = "7">
          </BreakpointContent>

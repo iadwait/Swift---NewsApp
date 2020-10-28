@@ -14,6 +14,7 @@ class NewsViewCell: UITableViewCell {
     @IBOutlet weak var lblTitle: UILabel!
     @IBOutlet weak var lblDescription: UILabel!
     @IBOutlet weak var viewNews: UIView!
+    @IBOutlet weak var lblPublishedAt: UILabel!
     
     
     override func awakeFromNib() {
